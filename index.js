@@ -2,13 +2,14 @@
 
 // creata a basic api
 const express = require("express");
+const cors = require("cors");
 const { connection } = require("./config/db");
 const { userRouter } = require("./Routes/userRoute");
 const { restRoute } = require("./Routes/RestaurantRoutes");
 const { orderRoute } = require("./Routes/ordersRoutes");
 const app = express();
 require("dotenv").config();
-
+app.use(cors())
 app.use(express.json());
 app.get("/", async (req, res) => {
   res.send("Welcome to Food api");
